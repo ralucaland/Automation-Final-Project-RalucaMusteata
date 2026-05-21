@@ -1,9 +1,8 @@
 package pages;
 
-<<<<<<< HEAD
 public class dashboardPageOrangeHRM {
-}
-=======
+
+
 import API.config.TestConfig;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -47,4 +46,4 @@ public class DashboardPageOrangeHRM extends BasePageOrangeHRM {
         driver.findElement(pimMenu).click();
     }
 }
->>>>>>> d2b0f98 (push)
+

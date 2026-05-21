@@ -1,8 +1,7 @@
 package tests;
 
-<<<<<<< HEAD
 public class pimTests {
-=======
+
 import API.data.Data;
 import org.testng.Assert;
 import org.testng.annotations.Test;

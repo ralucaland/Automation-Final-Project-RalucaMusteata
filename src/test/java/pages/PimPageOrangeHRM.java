@@ -1,9 +1,7 @@
 package pages;
 
-<<<<<<< HEAD
 public class pimPageOrangeHRM {
-}
-=======
+
 import API.config.TestConfig;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -32,4 +30,4 @@ public class PimPageOrangeHRM extends BasePageOrangeHRM {
         ).getText();
     }
 }
->>>>>>> d2b0f98 (push)
+
