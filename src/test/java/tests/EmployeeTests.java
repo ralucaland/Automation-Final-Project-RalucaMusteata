@@ -11,7 +11,7 @@ import pages.PimPageOrangeHRM;
 public class EmployeeTests extends BaseTests {
 
     @Test
-    public void employeeTest() {
+    public void EmployeeTest() {
 
         System.out.println("Step 1: Create page objects");
 
@@ -71,5 +71,8 @@ public class EmployeeTests extends BaseTests {
         );
 
         System.out.println("Test PASSED: Add employee flow executed successfully");
+
     }
 }
+
+

@@ -42,5 +42,97 @@ public class PimPageOrangeHRM extends BasePageOrangeHRM {
 
         driver.findElement(addEmployeeButton).click();
     }
+    //Shearch Doru
+    private By employeeNameInput =
+            By.xpath("//label[text()='Employee Name']/../following-sibling::div//input");
+
+    private By firstAutocompleteOption =
+            By.xpath("//div[@role='listbox']//span");
+
+    private By searchButton =
+            By.xpath("//button[@type='submit']");
+
+    private By employeeNameResult =
+            By.xpath("//div[@role='table']//div[contains(text(),'Doru')]");
+
+    //metode
+
+    public void enterEmployeeName(String employeeName) {
+
+        WebDriverWait wait =
+                new WebDriverWait(driver, Duration.ofSeconds(TestConfig.WAIT_TIME));
+
+        wait.until(
+                ExpectedConditions.visibilityOfElementLocated(employeeNameInput)
+        );
+
+        driver.findElement(employeeNameInput).sendKeys(employeeName);
+    }
+
+    public void selectFirstEmployeeFromAutocomplete() {
+
+        WebDriverWait wait =
+                new WebDriverWait(driver, Duration.ofSeconds(TestConfig.WAIT_TIME));
+
+        wait.until(
+                ExpectedConditions.visibilityOfElementLocated(firstAutocompleteOption)
+        );
+
+        driver.findElement(firstAutocompleteOption).click();
+    }
+
+    public void clickSearch() {
+
+        WebDriverWait wait =
+                new WebDriverWait(driver, Duration.ofSeconds(TestConfig.WAIT_TIME));
+
+        wait.until(
+                ExpectedConditions.elementToBeClickable(searchButton)
+        );
+
+        driver.findElement(searchButton).click();
+    }
+
+    public String getEmployeeNameResult() {
+
+        WebDriverWait wait =
+                new WebDriverWait(driver, Duration.ofSeconds(TestConfig.WAIT_TIME));
+
+        wait.until(
+                ExpectedConditions.visibilityOfElementLocated(employeeNameResult)
+        );
+
+        return driver.findElement(employeeNameResult).getText();
+    }
+    private By employeeIdInput =
+            By.xpath("//label[text()='Employee Id']/../following-sibling::div//input");
+
+    private By noRecordsMessage =
+            By.xpath("//span[text()='No Records Found']");
+
+    //metoda
+    public void enterEmployeeId(String employeeId) {
+
+        WebDriverWait wait =
+                new WebDriverWait(driver, Duration.ofSeconds(TestConfig.WAIT_TIME));
+
+        wait.until(
+                ExpectedConditions.visibilityOfElementLocated(employeeIdInput)
+        );
+
+        driver.findElement(employeeIdInput).sendKeys(employeeId);
+    }
+
+    public String getNoRecordsMessage() {
+
+        WebDriverWait wait =
+                new WebDriverWait(driver, Duration.ofSeconds(TestConfig.WAIT_TIME));
+
+        wait.until(
+                ExpectedConditions.visibilityOfElementLocated(noRecordsMessage)
+        );
+
+        return driver.findElement(noRecordsMessage).getText();
+    }
 }
 

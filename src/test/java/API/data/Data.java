@@ -28,6 +28,7 @@ public class Data {
     public static final String EMPLOYEE_LAST_NAME =
             "Labradorul";
 
+    public static final String EMPLOYEE_FULL_NAME = "Doru Labradoru";
 
 }
 
