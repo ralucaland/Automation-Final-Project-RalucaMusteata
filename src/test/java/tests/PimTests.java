@@ -1,7 +1,5 @@
 package tests;
 
-public class pimTests {
-
 import API.data.Data;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -9,7 +7,7 @@ import pages.DashboardPageOrangeHRM;
 import pages.LoginPageOrangeHRM;
 import pages.PimPageOrangeHRM;
 
-public class pimTests extends baseTests {
+public class PimTests extends BaseTests {
 
 @Test
 public void navigateToPimPageTest() {
@@ -51,5 +49,5 @@ public void navigateToPimPageTest() {
 
     System.out.println("Test PASSED: PIM page is displayed");
     }
->>>>>>> d2b0f98 (push)
+
 }

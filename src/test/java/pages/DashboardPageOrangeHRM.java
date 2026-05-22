@@ -1,8 +1,5 @@
 package pages;
 
-public class dashboardPageOrangeHRM {
-
-
 import API.config.TestConfig;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

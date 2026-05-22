@@ -1,7 +1,5 @@
 package pages;
 
-public class pimPageOrangeHRM {
-
 import API.config.TestConfig;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -28,6 +26,21 @@ public class PimPageOrangeHRM extends BasePageOrangeHRM {
         return wait.until(
                 ExpectedConditions.visibilityOfElementLocated(pimTitle)
         ).getText();
+    }
+    private By addEmployeeButton =
+            By.xpath("//a[text()='Add Employee']");
+
+    public void clickAddEmployee() {
+
+        WebDriverWait wait =
+                new WebDriverWait(driver,
+                        Duration.ofSeconds(TestConfig.WAIT_TIME));
+
+        wait.until(
+                ExpectedConditions.elementToBeClickable(addEmployeeButton)
+        );
+
+        driver.findElement(addEmployeeButton).click();
     }
 }
 

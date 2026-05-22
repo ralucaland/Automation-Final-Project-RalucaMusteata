@@ -1,16 +1,12 @@
 package tests;
 
-<<<<<<< HEAD
-public class loginTests {
-}
-=======
 import API.data.Data;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.DashboardPageOrangeHRM;
 import pages.LoginPageOrangeHRM;
 
-public class loginTests extends baseTests {
+public class LoginTests extends BaseTests {
 
     @Test
     public void validLoginTest() {
@@ -69,4 +65,4 @@ public class loginTests extends baseTests {
     }
 }
 
->>>>>>> d2b0f98 (push)
+

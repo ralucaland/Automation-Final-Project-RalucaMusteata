@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import pages.DashboardPageOrangeHRM;
 import pages.LoginPageOrangeHRM;
 
-public class checkTests extends baseTests {
+public class CheckTests extends BaseTests {
     @Test
     public void checkOpenOrangeHRM() {
 

@@ -1,15 +1,11 @@
 package pages;
 
-public class loginPageOrangeHRM {
-}
-
+import API.config.TestConfig;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import API.config.TestConfig;
+
 import java.time.Duration;
 
 public class LoginPageOrangeHRM extends BasePageOrangeHRM {
@@ -70,4 +66,5 @@ public class LoginPageOrangeHRM extends BasePageOrangeHRM {
         return driver.findElement(errorMessage).getText();
     }
 }
->>>>>>> d2b0f98 (push)
+
+

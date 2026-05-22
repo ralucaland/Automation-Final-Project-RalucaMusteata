@@ -1,8 +1,4 @@
 package pages;
-
-public class BasePageOrangeHRM {
-}
-
 import org.openqa.selenium.WebDriver;
 
 public class BasePageOrangeHRM {
