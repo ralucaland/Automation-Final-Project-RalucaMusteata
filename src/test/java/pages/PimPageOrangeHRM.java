@@ -1,138 +1,83 @@
 package pages;
 
-import API.config.TestConfig;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class PimPageOrangeHRM extends BasePageOrangeHRM {
 
+    // Locator pentru titlul paginii PIM
     private By pimTitle =
             By.xpath("//h6[text()='PIM']");
+
+    // Locator pentru butonul Add Employee
+    private By addEmployeeButton =
+            By.xpath("//a[text()='Add Employee']");
+
+    // Locator pentru câmpul Employee Name din pagina PIM
+    private By employeeNameInput =
+            By.xpath("//label[text()='Employee Name']/../following-sibling::div//input");
+
+    // Locator pentru prima opțiune din autocomplete
+    private By firstAutocompleteOption =
+            By.xpath("//div[@role='listbox']//span");
+
+    // Locator pentru butonul Search
+    private By searchButton =
+            By.xpath("//button[@type='submit']");
+
+    // Locator pentru rezultatul căutării după numele Doru
+    private By employeeNameResult =
+            By.xpath("//div[@role='table']//div[contains(text(),'Doru')]");
+
+    // Locator pentru câmpul Employee Id
+    private By employeeIdInput =
+            By.xpath("//label[text()='Employee Id']/../following-sibling::div//input");
+
+    // Locator pentru mesajul afișat când nu există rezultate
+    private By noRecordsMessage =
+            By.xpath("//span[text()='No Records Found']");
 
     public PimPageOrangeHRM(WebDriver driver) {
         super(driver);
     }
 
+    // Returnează titlul paginii PIM
     public String getPimTitle() {
-
-        WebDriverWait wait =
-                new WebDriverWait(driver,
-                        Duration.ofSeconds(TestConfig.WAIT_TIME));
-
-        return wait.until(
-                ExpectedConditions.visibilityOfElementLocated(pimTitle)
-        ).getText();
+        return getText(pimTitle);
     }
-    private By addEmployeeButton =
-            By.xpath("//a[text()='Add Employee']");
 
+    // Face click pe Add Employee
     public void clickAddEmployee() {
-
-        WebDriverWait wait =
-                new WebDriverWait(driver,
-                        Duration.ofSeconds(TestConfig.WAIT_TIME));
-
-        wait.until(
-                ExpectedConditions.elementToBeClickable(addEmployeeButton)
-        );
-
-        driver.findElement(addEmployeeButton).click();
+        click(addEmployeeButton);
     }
-    //Shearch Doru
-    private By employeeNameInput =
-            By.xpath("//label[text()='Employee Name']/../following-sibling::div//input");
 
-    private By firstAutocompleteOption =
-            By.xpath("//div[@role='listbox']//span");
-
-    private By searchButton =
-            By.xpath("//button[@type='submit']");
-
-    private By employeeNameResult =
-            By.xpath("//div[@role='table']//div[contains(text(),'Doru')]");
-
-    //metode
-
+    // Introduce numele angajatului în câmpul Employee Name
     public void enterEmployeeName(String employeeName) {
-
-        WebDriverWait wait =
-                new WebDriverWait(driver, Duration.ofSeconds(TestConfig.WAIT_TIME));
-
-        wait.until(
-                ExpectedConditions.visibilityOfElementLocated(employeeNameInput)
-        );
-
-        driver.findElement(employeeNameInput).sendKeys(employeeName);
+        type(employeeNameInput, employeeName);
     }
 
+    // Selectează prima opțiune din lista autocomplete
     public void selectFirstEmployeeFromAutocomplete() {
-
-        WebDriverWait wait =
-                new WebDriverWait(driver, Duration.ofSeconds(TestConfig.WAIT_TIME));
-
-        wait.until(
-                ExpectedConditions.visibilityOfElementLocated(firstAutocompleteOption)
-        );
-
-        driver.findElement(firstAutocompleteOption).click();
+        click(firstAutocompleteOption);
     }
 
+    // Face click pe butonul Search
     public void clickSearch() {
-
-        WebDriverWait wait =
-                new WebDriverWait(driver, Duration.ofSeconds(TestConfig.WAIT_TIME));
-
-        wait.until(
-                ExpectedConditions.elementToBeClickable(searchButton)
-        );
-
-        driver.findElement(searchButton).click();
+        click(searchButton);
     }
 
+    // Returnează numele angajatului afișat în rezultatele căutării
     public String getEmployeeNameResult() {
-
-        WebDriverWait wait =
-                new WebDriverWait(driver, Duration.ofSeconds(TestConfig.WAIT_TIME));
-
-        wait.until(
-                ExpectedConditions.visibilityOfElementLocated(employeeNameResult)
-        );
-
-        return driver.findElement(employeeNameResult).getText();
+        return getText(employeeNameResult);
     }
-    private By employeeIdInput =
-            By.xpath("//label[text()='Employee Id']/../following-sibling::div//input");
 
-    private By noRecordsMessage =
-            By.xpath("//span[text()='No Records Found']");
-
-    //metoda
+    // Introduce un Employee Id în câmpul Employee Id
     public void enterEmployeeId(String employeeId) {
-
-        WebDriverWait wait =
-                new WebDriverWait(driver, Duration.ofSeconds(TestConfig.WAIT_TIME));
-
-        wait.until(
-                ExpectedConditions.visibilityOfElementLocated(employeeIdInput)
-        );
-
-        driver.findElement(employeeIdInput).sendKeys(employeeId);
+        type(employeeIdInput, employeeId);
     }
 
+    // Returnează mesajul No Records Found
     public String getNoRecordsMessage() {
-
-        WebDriverWait wait =
-                new WebDriverWait(driver, Duration.ofSeconds(TestConfig.WAIT_TIME));
-
-        wait.until(
-                ExpectedConditions.visibilityOfElementLocated(noRecordsMessage)
-        );
-
-        return driver.findElement(noRecordsMessage).getText();
+        return getText(noRecordsMessage);
     }
 }
-

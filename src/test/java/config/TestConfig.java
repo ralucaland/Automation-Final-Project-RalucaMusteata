@@ -1,4 +1,4 @@
-package API.config;
+package config;
 
 public class TestConfig {
 

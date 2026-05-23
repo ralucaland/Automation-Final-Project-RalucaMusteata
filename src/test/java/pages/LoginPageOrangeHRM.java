@@ -1,70 +1,53 @@
 package pages;
 
-import API.config.TestConfig;
+import config.TestConfig;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class LoginPageOrangeHRM extends BasePageOrangeHRM {
 
-    private By usernameInput = By.name("username");
+    // Locator pentru câmpul Username
+    private By usernameInput =
+            By.name("username");
 
-    private By passwordInput = By.name("password");
+    // Locator pentru câmpul Password
+    private By passwordInput =
+            By.name("password");
 
+    // Locator pentru butonul Login
     private By loginButton =
             By.cssSelector("button[type='submit']");
+
+    // Locator pentru mesajul de eroare afișat la login invalid
     private By errorMessage =
             By.cssSelector(".oxd-alert-content-text");
 
     public LoginPageOrangeHRM(WebDriver driver) {
-
         super(driver);
     }
 
+    // Deschide pagina de login OrangeHRM
     public void openLoginPage() {
+        driver.get(TestConfig.ORANGE_HRM_URL);
+    }
 
-            driver.get(TestConfig.ORANGE_HRM_URL);
-        }
-
+    // Introduce username în câmpul de login
     public void enterUsername(String username) {
-
-        WebDriverWait wait =
-                new WebDriverWait(driver, Duration.ofSeconds(10));
-
-        wait.until(
-                ExpectedConditions.visibilityOfElementLocated(usernameInput)
-        );
-
-        driver.findElement(usernameInput).sendKeys(username);
+        type(usernameInput, username);
     }
 
+    // Introduce parola în câmpul de login
     public void enterPassword(String password) {
-
-        driver.findElement(passwordInput).sendKeys(password);
+        type(passwordInput, password);
     }
 
+    // Apasă butonul de Login
     public void clickLogin() {
-
-        driver.findElement(loginButton).click();
+        click(loginButton);
     }
 
-
-
+    // Returnează mesajul de eroare pentru login invalid
     public String getErrorMessage() {
-
-        WebDriverWait wait =
-                new WebDriverWait(driver,
-                        Duration.ofSeconds(TestConfig.WAIT_TIME));
-
-        wait.until(
-                ExpectedConditions.visibilityOfElementLocated(errorMessage)
-        );
-
-        return driver.findElement(errorMessage).getText();
+        return getText(errorMessage);
     }
 }
-
-

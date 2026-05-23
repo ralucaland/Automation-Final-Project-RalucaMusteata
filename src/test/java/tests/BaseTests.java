@@ -17,10 +17,10 @@ public class BaseTests {
         driver.manage().window().maximize();
     }
 
-    /*@AfterMethod
+    @AfterMethod
     public void tearDown() {
         driver.quit();
-    }*/
+    }
 }
 
 

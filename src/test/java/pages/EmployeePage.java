@@ -1,80 +1,54 @@
 package pages;
 
-import API.config.TestConfig;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class EmployeePage extends BasePageOrangeHRM {
 
+    // Locator pentru câmpul First Name din formularul Add Employee
     private By firstNameInput =
             By.name("firstName");
 
+    // Locator pentru câmpul Last Name din formularul Add Employee
     private By lastNameInput =
             By.name("lastName");
 
+    // Locator pentru butonul Save
     private By saveButton =
             By.cssSelector("button[type='submit']");
 
+    // Constructorul primește driverul din test și îl trimite către BasePageOrangeHRM
     public EmployeePage(WebDriver driver) {
         super(driver);
     }
 
+    // Completează câmpul First Name cu prenumele angajatului
     public void enterFirstName(String firstName) {
-
-        WebDriverWait wait =
-                new WebDriverWait(driver,
-                        Duration.ofSeconds(TestConfig.WAIT_TIME));
-
-        wait.until(
-                ExpectedConditions.visibilityOfElementLocated(firstNameInput)
-        );
-
-        driver.findElement(firstNameInput).sendKeys(firstName);
+        type(firstNameInput, firstName);
     }
 
+    // Completează câmpul Last Name cu numele angajatului
     public void enterLastName(String lastName) {
-
-        driver.findElement(lastNameInput).sendKeys(lastName);
+        type(lastNameInput, lastName);
     }
 
+    // Apasă butonul Save după ce așteaptă ca loaderul paginii să dispară
     public void clickSave() {
-
-        driver.findElement(saveButton).click();
+        waitForPageLoaderToDisappear();
+        click(saveButton);
     }
 
-
+    // Returnează valoarea salvată în câmpul First Name
+    // Pentru input-uri folosim getAttribute("value"), nu getText()
     public String getFirstNameValue() {
-
-        WebDriverWait wait =
-                new WebDriverWait(driver,
-                        Duration.ofSeconds(TestConfig.WAIT_TIME));
-
-        wait.until(
-                ExpectedConditions.visibilityOfElementLocated(firstNameInput)
-        );
-
-        return driver.findElement(firstNameInput)
+        return waitForVisible(firstNameInput)
                 .getAttribute("value");
     }
 
+    // Returnează valoarea salvată în câmpul Last Name
+    // Pentru input-uri folosim getAttribute("value"), nu getText()
     public String getLastNameValue() {
-
-        WebDriverWait wait =
-                new WebDriverWait(driver,
-                        Duration.ofSeconds(TestConfig.WAIT_TIME));
-
-        wait.until(
-                ExpectedConditions.visibilityOfElementLocated(lastNameInput)
-        );
-
-        return driver.findElement(lastNameInput)
+        return waitForVisible(lastNameInput)
                 .getAttribute("value");
     }
 }
-
-
-

@@ -1,6 +1,6 @@
 package tests;
 
-import API.data.Data;
+import data.UIData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.DashboardPageOrangeHRM;
@@ -28,8 +28,8 @@ public void navigateToPimPageTest() {
     loginPage.openLoginPage();
 
     System.out.println("Step 5: Login with valid credentials");
-    loginPage.enterUsername(Data.VALID_USERNAME);
-    loginPage.enterPassword(Data.VALID_PASSWORD);
+    loginPage.enterUsername(UIData.VALID_USERNAME);
+    loginPage.enterPassword(UIData.VALID_PASSWORD);
     loginPage.clickLogin();
 
     System.out.println("Step 6: Click PIM menu");
@@ -44,7 +44,7 @@ public void navigateToPimPageTest() {
     System.out.println("Step 8: Validate PIM page title");
     Assert.assertEquals(
             title,
-            Data.PIM_TITLE
+            UIData.PIM_TITLE
     );
 
     System.out.println("Test PASSED: PIM page is displayed");

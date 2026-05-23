@@ -1,6 +1,6 @@
 package tests;
 
-import API.data.Data;
+import data.UIData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.DashboardPageOrangeHRM;
@@ -25,13 +25,13 @@ public class SearchDoruTest extends BaseTests {
 
         loginPage.openLoginPage();
 
-        loginPage.enterUsername(Data.VALID_USERNAME);
-        loginPage.enterPassword(Data.VALID_PASSWORD);
+        loginPage.enterUsername(UIData.VALID_USERNAME);
+        loginPage.enterPassword(UIData.VALID_PASSWORD);
         loginPage.clickLogin();
 
         dashboardPage.clickPimMenu();
 
-        pimPage.enterEmployeeName(Data.EMPLOYEE_FULL_NAME);
+        pimPage.enterEmployeeName(UIData.EMPLOYEE_FULL_NAME);
         pimPage.selectFirstEmployeeFromAutocomplete();
         pimPage.clickSearch();
 
@@ -41,7 +41,7 @@ public class SearchDoruTest extends BaseTests {
         System.out.println("Employee found: " + result);
 
         Assert.assertTrue(
-                result.contains(Data.EMPLOYEE_FIRST_NAME),
+                result.contains(UIData.EMPLOYEE_FIRST_NAME),
                 "Expected employee first name was not found"
         );
 
@@ -64,13 +64,13 @@ public class SearchDoruTest extends BaseTests {
 
         loginPage.openLoginPage();
 
-        loginPage.enterUsername(Data.VALID_USERNAME);
-        loginPage.enterPassword(Data.VALID_PASSWORD);
+        loginPage.enterUsername(UIData.VALID_USERNAME);
+        loginPage.enterPassword(UIData.VALID_PASSWORD);
         loginPage.clickLogin();
 
         dashboardPage.clickPimMenu();
 
-        pimPage.enterEmployeeName(Data.EMPLOYEE_FIRST_NAME);
+        pimPage.enterEmployeeName(UIData.EMPLOYEE_FIRST_NAME);
         pimPage.clickSearch();
 
         String result =
@@ -79,7 +79,7 @@ public class SearchDoruTest extends BaseTests {
         System.out.println("Employee found: " + result);
 
         Assert.assertTrue(
-                result.contains(Data.EMPLOYEE_FIRST_NAME),
+                result.contains(UIData.EMPLOYEE_FIRST_NAME),
                 "Expected employee first name was not found in result list"
         );
 
@@ -102,8 +102,8 @@ public class SearchDoruTest extends BaseTests {
 
         loginPage.openLoginPage();
 
-        loginPage.enterUsername(Data.VALID_USERNAME);
-        loginPage.enterPassword(Data.VALID_PASSWORD);
+        loginPage.enterUsername(UIData.VALID_USERNAME);
+        loginPage.enterPassword(UIData.VALID_PASSWORD);
         loginPage.clickLogin();
 
         dashboardPage.clickPimMenu();

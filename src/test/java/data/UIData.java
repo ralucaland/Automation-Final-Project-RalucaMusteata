@@ -1,6 +1,6 @@
-package API.data;
+package data;
 
-public class Data {
+public class UIData {
 
     public static final String VALID_USERNAME =
         "Admin";
@@ -28,7 +28,17 @@ public class Data {
     public static final String EMPLOYEE_LAST_NAME =
             "Labradorul";
 
-    public static final String EMPLOYEE_FULL_NAME = "Doru Labradoru";
+    public static final String EMPLOYEE_FULL_NAME =
+            EMPLOYEE_FIRST_NAME + " " + EMPLOYEE_LAST_NAME;
+
+    public static final String LEAVE_FROM_DATE =
+            "2026-05-27";
+
+    public static final String LEAVE_TO_DATE =
+            "2026-05-27";
+
+    public static final String SUCCESS_MESSAGE =
+            "Success";
 
 }
 

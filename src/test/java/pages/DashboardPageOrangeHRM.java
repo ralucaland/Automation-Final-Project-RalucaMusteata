@@ -1,46 +1,37 @@
 package pages;
 
-import API.config.TestConfig;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class DashboardPageOrangeHRM extends BasePageOrangeHRM {
 
-    private By dashboardTitle = By.xpath("//h6[text()='Dashboard']");
+    // Locator pentru titlul paginii Dashboard
+    private By dashboardTitle =
+            By.xpath("//h6[text()='Dashboard']");
+
+    // Locator pentru meniul PIM din sidebar
+    private By pimMenu =
+            By.xpath("//span[text()='PIM']");
 
     public DashboardPageOrangeHRM(WebDriver driver) {
         super(driver);
     }
 
+    // Returnează textul titlului Dashboard
     public String getDashboardTitle() {
-
-        WebDriverWait wait =
-                new WebDriverWait(driver, Duration.ofSeconds(TestConfig.WAIT_TIME));
-
-        return wait.until(
-                ExpectedConditions.visibilityOfElementLocated(dashboardTitle)
-        ).getText();
+        return getText(dashboardTitle);
     }
 
-    //Face click in pagina dashboard pe PIM
-    private By pimMenu =
-            By.xpath("//span[text()='PIM']");
-
+    // Face click pe PIM din Dashboard
     public void clickPimMenu() {
+        click(pimMenu);
+    }
 
-        WebDriverWait wait =
-                new WebDriverWait(driver,
-                        Duration.ofSeconds(TestConfig.WAIT_TIME));
-
-        wait.until(
-                ExpectedConditions.elementToBeClickable(pimMenu)
-        );
-
-        driver.findElement(pimMenu).click();
+    // Locator pentru LeavPage
+    private By leaveMenu =
+            By.xpath("//span[text()='Leave']");
+    // Face click pe meniul Leave din Dashboard
+    public void clickLeaveMenu() {
+        click(leaveMenu);
     }
 }
-

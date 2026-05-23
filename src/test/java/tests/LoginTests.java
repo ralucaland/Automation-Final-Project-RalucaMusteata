@@ -1,6 +1,6 @@
 package tests;
 
-import API.data.Data;
+import data.UIData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.DashboardPageOrangeHRM;
@@ -19,8 +19,8 @@ public class LoginTests extends BaseTests {
 //Open OrangeHRM login page
         loginPage.openLoginPage();
 //Enter valid credentiales
-        loginPage.enterUsername(Data.VALID_USERNAME);
-        loginPage.enterPassword(Data.VALID_PASSWORD);
+        loginPage.enterUsername(UIData.VALID_USERNAME);
+        loginPage.enterPassword(UIData.VALID_PASSWORD);
 //Enter valid password
         loginPage.clickLogin();
 //Read Dashboard title
@@ -29,7 +29,7 @@ public class LoginTests extends BaseTests {
 //Validate Dashboard title
         Assert.assertEquals(
                 title,
-                Data.DASHBOARD_TITLE
+                UIData.DASHBOARD_TITLE
         );
         System.out.println("Test PASSED: Valid login successful");
     }
@@ -44,10 +44,10 @@ public class LoginTests extends BaseTests {
         loginPage.openLoginPage();
 
         System.out.println("Step 3: Enter invalid username");
-        loginPage.enterUsername(Data.INVALID_USERNAME);
+        loginPage.enterUsername(UIData.INVALID_USERNAME);
 
         System.out.println("Step 4: Enter invalid password");
-        loginPage.enterPassword(Data.INVALID_PASSWORD);
+        loginPage.enterPassword(UIData.INVALID_PASSWORD);
 
         System.out.println("Step 5: Click Login button");
         loginPage.clickLogin();
@@ -60,7 +60,7 @@ public class LoginTests extends BaseTests {
         System.out.println("Step 7: Validate error message");
         Assert.assertEquals(
                 error,
-                Data.INVALID_LOGIN_MESSAGE
+                UIData.INVALID_LOGIN_MESSAGE
         );
     }
 }

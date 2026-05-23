@@ -1,6 +1,6 @@
 package tests;
 
-import API.data.Data;
+import data.UIData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.DashboardPageOrangeHRM;
@@ -31,8 +31,8 @@ public class EmployeeTests extends BaseTests {
         loginPage.openLoginPage();
 
         System.out.println("Step 3: Login with valid credentials");
-        loginPage.enterUsername(Data.VALID_USERNAME);
-        loginPage.enterPassword(Data.VALID_PASSWORD);
+        loginPage.enterUsername(UIData.VALID_USERNAME);
+        loginPage.enterPassword(UIData.VALID_PASSWORD);
         loginPage.clickLogin();
 
         System.out.println("Step 4: Open PIM page");
@@ -42,10 +42,10 @@ public class EmployeeTests extends BaseTests {
         pimPage.clickAddEmployee();
 
         System.out.println("Step 6: Enter employee first name");
-        employeePage.enterFirstName(Data.EMPLOYEE_FIRST_NAME);
+        employeePage.enterFirstName(UIData.EMPLOYEE_FIRST_NAME);
 
         System.out.println("Step 7: Enter employee last name");
-        employeePage.enterLastName(Data.EMPLOYEE_LAST_NAME);
+        employeePage.enterLastName(UIData.EMPLOYEE_LAST_NAME);
 
         System.out.println("Step 8: Click Save");
         employeePage.clickSave();
@@ -67,7 +67,7 @@ public class EmployeeTests extends BaseTests {
 
         Assert.assertEquals(
                 fullName,
-                Data.EMPLOYEE_FIRST_NAME + " " + Data.EMPLOYEE_LAST_NAME
+                UIData.EMPLOYEE_FIRST_NAME + " " + UIData.EMPLOYEE_LAST_NAME
         );
 
         System.out.println("Test PASSED: Add employee flow executed successfully");
