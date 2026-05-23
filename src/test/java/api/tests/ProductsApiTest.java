@@ -1,7 +1,7 @@
 package api.tests;
 
 import api.base.BaseApiTest;
-import api.data.DataPracticeSoft;
+import api.data.DataPracticeSoftTests;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -29,11 +29,11 @@ public class ProductsApiTest extends BaseApiTest {
                 // Adăugăm query parameter-ul pentru căutare.
                 // q = hammer
                 .queryParam(
-                        DataPracticeSoft.SEARCH_QUERY_PARAM,
-                        DataPracticeSoft.SEARCH_PRODUCT
+                        DataPracticeSoftTests.SEARCH_QUERY_PARAM,
+                        DataPracticeSoftTests.SEARCH_PRODUCT
                 )
                 .when()
-                .get(DataPracticeSoft.PRODUCTS_ENDPOINT);
+                .get(DataPracticeSoftTests.PRODUCTS_ENDPOINT);
 
         // Afișăm răspunsul pentru a verifica manual ce produse au fost returnate.
         response.prettyPrint();
@@ -41,14 +41,14 @@ public class ProductsApiTest extends BaseApiTest {
         // Verificăm că request-ul a fost procesat cu succes.
         Assert.assertEquals(
                 response.statusCode(),
-                DataPracticeSoft.STATUS_CODE_OK
+                DataPracticeSoftTests.STATUS_CODE_OK
         );
 
         // Verificăm că lista de produse returnată în "data" conține cel puțin un produs.
         // Dacă size() > 0, înseamnă că search-ul a găsit rezultate.
         Assert.assertTrue(
                 response.jsonPath()
-                        .getList(DataPracticeSoft.RESPONSE_DATA_KEY)
+                        .getList(DataPracticeSoftTests.RESPONSE_DATA_KEY)
                         .size() > 0
         );
     }
@@ -75,11 +75,11 @@ public class ProductsApiTest extends BaseApiTest {
                 // Adăugăm un query parameter cu un termen invalid.
                 // Scopul este să verificăm că API-ul nu returnează produse greșite.
                 .queryParam(
-                        DataPracticeSoft.SEARCH_QUERY_PARAM,
-                        DataPracticeSoft.SEARCH_INVALID_PRODUCT
+                        DataPracticeSoftTests.SEARCH_QUERY_PARAM,
+                        DataPracticeSoftTests.SEARCH_INVALID_PRODUCT
                 )
                 .when()
-                .get(DataPracticeSoft.PRODUCTS_ENDPOINT);
+                .get(DataPracticeSoftTests.PRODUCTS_ENDPOINT);
 
         // Afișăm răspunsul pentru debugging.
         // Ar trebui să vedem că lista "data" este goală.
@@ -88,14 +88,14 @@ public class ProductsApiTest extends BaseApiTest {
         // Verificăm că request-ul a fost acceptat și procesat cu succes.
         Assert.assertEquals(
                 response.statusCode(),
-                DataPracticeSoft.STATUS_CODE_OK
+                DataPracticeSoftTests.STATUS_CODE_OK
         );
 
         // Verificăm că lista de produse returnată este goală.
         // Asta confirmă că API-ul nu returnează produse pentru un termen invalid.
         Assert.assertTrue(
                 response.jsonPath()
-                        .getList(DataPracticeSoft.RESPONSE_DATA_KEY)
+                        .getList(DataPracticeSoftTests.RESPONSE_DATA_KEY)
                         .isEmpty()
         );
     }
@@ -120,10 +120,10 @@ public class ProductsApiTest extends BaseApiTest {
                 // Endpoint final: /products/1
                 .pathParam(
                         "productId",
-                        DataPracticeSoft.VALID_PRODUCT_ID
+                        DataPracticeSoftTests.VALID_PRODUCT_ID
                 )
                 .when()
-                .get(DataPracticeSoft.SINGLE_PRODUCT_ENDPOINT);
+                .get(DataPracticeSoftTests.SINGLE_PRODUCT_ENDPOINT);
 
         // Afișăm răspunsul pentru a vedea detaliile produsului returnat.
         response.prettyPrint();
@@ -131,17 +131,17 @@ public class ProductsApiTest extends BaseApiTest {
         // Verificăm că request-ul a fost procesat cu succes.
         Assert.assertEquals(
                 response.statusCode(),
-                DataPracticeSoft.STATUS_CODE_OK
+                DataPracticeSoftTests.STATUS_CODE_OK
         );
 
         // Verificăm că produsul returnat are câmpul "id".
         Assert.assertNotNull(
-                response.jsonPath().get(DataPracticeSoft.RESPONSE_ID_KEY)
+                response.jsonPath().get(DataPracticeSoftTests.RESPONSE_ID_KEY)
         );
 
         // Verificăm că produsul returnat are câmpul "name".
         Assert.assertNotNull(
-                response.jsonPath().get(DataPracticeSoft.RESPONSE_NAME_KEY)
+                response.jsonPath().get(DataPracticeSoftTests.RESPONSE_NAME_KEY)
         );
     }
 }

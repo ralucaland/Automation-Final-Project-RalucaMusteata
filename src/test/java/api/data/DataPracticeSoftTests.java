@@ -1,6 +1,6 @@
 package api.data;
 
-public class DataPracticeSoft {
+public class DataPracticeSoftTests {
 
     // Base URL for Practice Software Testing API
     public static final String BASE_URL =
@@ -43,4 +43,25 @@ public class DataPracticeSoft {
     // Status code pentru request reușit
     public static final int STATUS_CODE_OK =
             200;
+
+
+
+    // Endpoint pentru login
+    public static final String LOGIN_ENDPOINT =
+            "/users/login";
+
+    // Date invalide pentru test negativ de login
+    public static final String INVALID_LOGIN_EMAIL =
+            "invalid_user@test.com";
+
+    public static final String INVALID_LOGIN_PASSWORD =
+            "wrongPassword123";
+
+    // Cheie JSON pentru mesajul de eroare
+    public static final String RESPONSE_ERROR_KEY =
+            "error";
+
+    // Status code pentru request neautorizat
+    public static final int STATUS_CODE_UNAUTHORIZED =
+            401;
 }
