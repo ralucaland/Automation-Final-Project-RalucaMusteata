@@ -30,7 +30,7 @@ Scopul proiectului este să demonstreze că pot crea, organiza și rula teste au
 - IntelliJ IDEA
 - Git
 - GitHub
-- 
+ 
 ## 3. Structura proiectului
 
 Proiectul este împărțit în mai multe pachete, pentru a separa clar testele UI, testele API, paginile și datele reutilizabile.
