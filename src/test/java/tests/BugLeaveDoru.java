@@ -7,7 +7,7 @@ import pages.DashboardPageOrangeHRM;
 import pages.LeavePageOrangeHRM;
 import pages.LoginPageOrangeHRM;
 
-public class LeaveTests extends BaseTests {
+public class BugLeaveDoru extends BaseTests {
 
     @Test
     public void assignLeaveToEmployeeTest() {
@@ -59,18 +59,20 @@ public class LeaveTests extends BaseTests {
         System.out.println("Pasul 12: Apăsăm butonul Assign");
         leavePage.clickAssign();
 
-        System.out.println("Pasul 13: Confirmăm popup-ul de concediu insuficient");
-        leavePage.confirmAssignmentPopup();
+        System.out.println("Pasul 13: Confirmăm popup-ul de concediu insuficient, dacă apare");
+        leavePage.confirmAssignmentPopupIfDisplayed();
 
         System.out.println("Pasul 14: Verificăm mesajul de succes");
         String actualMessage =
-                leavePage.getSuccessMessage();
+                leavePage.getToastMessage();
 
         System.out.println("Mesaj afișat: " + actualMessage);
 
         Assert.assertTrue(
-                actualMessage.contains(UIData.SUCCESS_MESSAGE),
-                "Mesajul de succes nu a fost afișat."
+                actualMessage.contains(UIData.SUCCESS_MESSAGE)
+                        || actualMessage.contains("Success")
+                        || actualMessage.contains("Successfully"),
+                "Mesajul de succes nu a fost afișat. Mesaj real: " + actualMessage
         );
 
         System.out.println("TEST TRECUT: Concediul a fost asignat cu succes angajatului.");

@@ -6,6 +6,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import listeners.TestListener;
+import org.testng.annotations.Listeners;
+
+@Listeners(TestListener.class)
 public class BaseTests {
 
     protected WebDriver driver;

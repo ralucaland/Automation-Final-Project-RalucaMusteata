@@ -22,20 +22,23 @@ public class UIData {
     public static final String PIM_TITLE =
             "PIM";
 
-    public static final String EMPLOYEE_FIRST_NAME =
-            "Doru";
+    // Date pentru testul de creare angajat
+    public static final String EMPLOYEE_FIRST_NAME = "Doru";
+    public static final String EMPLOYEE_LAST_NAME = "Labradorul";
+    public static final String EMPLOYEE_FULL_NAME = "Doru Labradorul";
 
-    public static final String EMPLOYEE_LAST_NAME =
-            "Labradorul";
+    // Date pentru căutare / leave - angajat existent în OrangeHRM
+    public static final String EXISTING_EMPLOYEE_FIRST_NAME = "Amelia";
+    public static final String EXISTING_EMPLOYEE_LAST_NAME = "Brown";
+    public static final String EXISTING_EMPLOYEE_FULL_NAME = "Amelia Brown";
+    public static final String EXISTING_EMPLOYEE_ID = "01715";
 
-    public static final String EMPLOYEE_FULL_NAME =
-            EMPLOYEE_FIRST_NAME + " " + EMPLOYEE_LAST_NAME;
 
     public static final String LEAVE_FROM_DATE =
-            "2026-05-27";
+            "2026-05-28";
 
     public static final String LEAVE_TO_DATE =
-            "2026-05-27";
+            "2026-05-28";
 
     public static final String SUCCESS_MESSAGE =
             "Success";

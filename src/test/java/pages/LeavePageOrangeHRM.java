@@ -1,102 +1,112 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LeavePageOrangeHRM extends BasePageOrangeHRM {
 
-    // Locator pentru tab-ul Assign Leave
+    // Tab-ul Assign Leave
     private By assignLeaveMenu =
             By.xpath("//a[text()='Assign Leave']");
 
-    // Locator pentru câmpul Employee Name
+    // Câmpul Employee Name
     private By employeeNameInput =
             By.xpath("//label[text()='Employee Name']/../following-sibling::div//input");
 
-    // Locator pentru prima opțiune din autocomplete
+    // Prima opțiune din autocomplete
     private By firstAutocompleteOption =
             By.xpath("//div[@role='listbox']//span");
 
-    // Locator pentru dropdown-ul Leave Type
+    // Dropdown Leave Type
     private By leaveTypeDropdown =
             By.xpath("//label[text()='Leave Type']/../following-sibling::div//div[contains(@class,'oxd-select-text')]");
 
-    // Locator pentru prima opțiune disponibilă din dropdown-ul Leave Type
+    // Prima opțiune din dropdown Leave Type
     private By firstLeaveTypeOption =
             By.xpath("//div[@role='listbox']//span");
 
-    // Locator pentru câmpul From Date
+    // From Date
     private By fromDateInput =
             By.xpath("//label[text()='From Date']/../following-sibling::div//input");
 
-    // Locator pentru câmpul To Date
+    // To Date
     private By toDateInput =
             By.xpath("//label[text()='To Date']/../following-sibling::div//input");
 
-    // Locator pentru butonul Assign
+    // Buton Assign
     private By assignButton =
             By.xpath("//button[@type='submit']");
 
-    // Locator pentru butonul Ok din popup-ul de concediu insuficient
+    // Buton OK din popup, dacă apare
     private By confirmButton =
-            By.xpath("//button[normalize-space()='Ok']");
+            By.xpath("//button[contains(@class,'oxd-button') and normalize-space()='Ok']");
 
-    // Locator pentru mesajul toast afișat după asignare/salvare
-    private By successMessage =
-            By.cssSelector(".oxd-toast-content");
+    // Toast message - variantă mai generală
+    private By toastMessage =
+            By.xpath("//div[contains(@class,'oxd-toast')]");
 
     public LeavePageOrangeHRM(WebDriver driver) {
         super(driver);
     }
 
-    // Deschide tab-ul Assign Leave
     public void clickAssignLeave() {
         click(assignLeaveMenu);
     }
 
-    // Introduce numele angajatului
     public void enterEmployeeName(String employeeName) {
-        type(employeeNameInput, employeeName);
+        click(employeeNameInput);
+        driver.findElement(employeeNameInput).sendKeys(employeeName);
     }
 
-    // Selectează primul angajat din lista autocomplete
     public void selectFirstEmployeeFromAutocomplete() {
+        wait.until(
+                ExpectedConditions.visibilityOfElementLocated(firstAutocompleteOption)
+        );
+
+        wait.until(
+                ExpectedConditions.elementToBeClickable(firstAutocompleteOption)
+        );
+
         click(firstAutocompleteOption);
     }
 
-    // Deschide dropdown-ul Leave Type
     public void openLeaveTypeDropdown() {
         click(leaveTypeDropdown);
     }
 
-    // Selectează prima opțiune disponibilă din Leave Type
     public void selectFirstLeaveTypeOption() {
         click(firstLeaveTypeOption);
     }
 
-    // Completează From Date fără să dubleze valoarea existentă
     public void enterFromDate(String fromDate) {
-        clearAndType(fromDateInput, fromDate);
+        click(fromDateInput);
+        driver.findElement(fromDateInput).sendKeys(Keys.CONTROL + "a");
+        driver.findElement(fromDateInput).sendKeys(Keys.BACK_SPACE);
+        driver.findElement(fromDateInput).sendKeys(fromDate);
     }
 
-    // Completează To Date fără să dubleze valoarea existentă
     public void enterToDate(String toDate) {
-        clearAndType(toDateInput, toDate);
+        click(toDateInput);
+        driver.findElement(toDateInput).sendKeys(Keys.CONTROL + "a");
+        driver.findElement(toDateInput).sendKeys(Keys.BACK_SPACE);
+        driver.findElement(toDateInput).sendKeys(toDate);
     }
 
-    // Apasă butonul Assign
     public void clickAssign() {
-        waitForPageLoaderToDisappear();
         click(assignButton);
     }
 
-    // Apasă Ok în popup-ul de confirmare
-    public void confirmAssignmentPopup() {
-        click(confirmButton);
+    public void confirmAssignmentPopupIfDisplayed() {
+        try {
+            click(confirmButton);
+        } catch (Exception e) {
+            System.out.println("Popup was not displayed. Continuing test.");
+        }
     }
 
-    // Returnează mesajul complet din toast
-    public String getSuccessMessage() {
-        return getText(successMessage);
+    public String getToastMessage() {
+        return getText(toastMessage);
     }
 }
