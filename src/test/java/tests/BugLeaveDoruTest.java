@@ -7,7 +7,7 @@ import pages.DashboardPageOrangeHRM;
 import pages.LeavePageOrangeHRM;
 import pages.LoginPageOrangeHRM;
 
-public class BugLeaveDoru extends BaseTests {
+public class BugLeaveDoruTest extends BaseTests {
 
     @Test
     public void assignLeaveToEmployeeTest() {
