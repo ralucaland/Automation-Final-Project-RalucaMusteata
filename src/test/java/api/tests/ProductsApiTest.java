@@ -104,42 +104,33 @@ public class ProductsApiTest extends BaseApiTest {
     public void getSingleProductByValidIdTest() {
 
         // API_004
-        // Scop: verificăm că API-ul returnează detaliile unui singur produs
-        // atunci când folosim un ID valid.
+        // Scop: verificăm că API-ul returnează detaliile unui produs existent.
         //
         // Request trimis:
-        // GET /products/1
+        // GET /products/{productId}
         //
-        // Validări principale:
-        // 1. Status code trebuie să fie 200 OK.
-        // 2. Response-ul trebuie să conțină câmpul "id".
-        // 3. Response-ul trebuie să conțină câmpul "name".
+        // Notă:
+        // Folosim un ID real copiat din response-ul GET /products?q=hammer.
 
         Response response = given()
-                // Înlocuim {productId} din endpoint cu valoarea din DataPracticeSoft.
-                // Endpoint final: /products/1
                 .pathParam(
                         "productId",
-                        DataPracticeSoftTests.VALID_PRODUCT_ID
+                        "01KSCXQ23BVG38QVJV1ST1WDH6"
                 )
                 .when()
                 .get(DataPracticeSoftTests.SINGLE_PRODUCT_ENDPOINT);
 
-        // Afișăm răspunsul pentru a vedea detaliile produsului returnat.
         response.prettyPrint();
 
-        // Verificăm că request-ul a fost procesat cu succes.
         Assert.assertEquals(
                 response.statusCode(),
                 DataPracticeSoftTests.STATUS_CODE_OK
         );
 
-        // Verificăm că produsul returnat are câmpul "id".
         Assert.assertNotNull(
                 response.jsonPath().get(DataPracticeSoftTests.RESPONSE_ID_KEY)
         );
 
-        // Verificăm că produsul returnat are câmpul "name".
         Assert.assertNotNull(
                 response.jsonPath().get(DataPracticeSoftTests.RESPONSE_NAME_KEY)
         );
