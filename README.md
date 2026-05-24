@@ -35,7 +35,7 @@ Scopul proiectului este să demonstreze că pot crea, organiza și rula teste au
 
 Proiectul este împărțit în mai multe pachete, pentru a separa clar testele UI, testele API, paginile și datele reutilizabile.
 
-### Teste UI-testat pe Orangehrmlive.com
+### Teste UI - testat pe OrangeHRM
 
 Testele UI sunt organizate folosind Page Object Model.
 
@@ -45,7 +45,7 @@ Clasele de test UI se află în `src/test/java/tests`.
 
 În testele UI au fost verificate scenarii precum login, navigare în aplicație, validare elemente afișate și fluxuri legate de angajați sau leave/concediu.
 
-### Teste API- testat pe Practicesoftwaretesting.com 
+### Teste API - testat pe Practicesoftwaretesting.com
 
 Testele API sunt organizate în pachetul `src/test/java/api` și au fost create folosind RestAssured.
 
