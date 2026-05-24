@@ -1,31 +1,64 @@
-# QA Automation Final Project
+# Proiect Final QA Automation_RalucaMusteata
+## 1. Descriere proiect
 
-## 1. Descriere generală
+Acest proiect reprezintă un proiect final de QA Automation.
 
-## 2. Tehnologii și instrumente folosite
+Proiectul conține teste automate pentru interfața aplicației, adică teste UI, și teste automate pentru API.
 
+Scopul proiectului este să demonstreze că pot crea, organiza și rula teste automate folosind Java, Selenium WebDriver, TestNG, Maven și RestAssured.
+
+În proiect am inclus:
+- teste UI
+- teste API
+- scenarii pozitive
+- scenarii negative
+- structură Page Object Model
+- raport de testare Extent Report
+- documentarea unui bug întâlnit și a workaround-ului aplicat
+
+## 2. Tehnologii folosite
+
+În acest proiect am folosit următoarele tehnologii și tool-uri:
+
+- Java
+- Selenium WebDriver
+- TestNG
+- Maven
+- RestAssured
+- Hamcrest Matchers
+- Extent Reports
+- IntelliJ IDEA
+- Git
+- GitHub
+- 
 ## 3. Structura proiectului
 
-## 4. Conținutul testelor
+Proiectul este împărțit în mai multe pachete, pentru a separa clar testele UI, testele API, paginile și datele reutilizabile.
 
-### 4.1 UI Testing
+### Teste UI-testat pe Opensource-demo
 
-### 4.2 API Testing
+Testele UI sunt organizate folosind Page Object Model.
 
-## 5. API Test Cases Summary
+Clasele de pagină se află în `src/test/java/pages`.
 
-## 6. API Testing Details
+Clasele de test UI se află în `src/test/java/tests`.
 
-### 6.1 API_002 - Search product with valid keyword
+În testele UI au fost verificate scenarii precum login, navigare în aplicație, validare elemente afișate și fluxuri legate de angajați sau leave/concediu.
 
-### 6.2 API_003 - Search product with invalid keyword
+### Teste API- testat pe Practicesoftwaretesting.com 
 
-### 6.3 API_004 - Get single product by valid ID
+Testele API sunt organizate în pachetul `src/test/java/api` și au fost create folosind RestAssured.
 
-### 6.4 API_005 - Login with invalid credentials
+Aceste teste verifică scenarii de tip GET și POST pentru produse și login.
 
-## 7. Metode și concepte folosite
+Scenariile acoperite sunt: căutare produs existent, căutare produs inexistent, obținere produs după ID valid și login cu date invalide.
 
-## 8. Test Reports
+Validările principale sunt pentru status code, conținutul răspunsului și mesajul de eroare pentru autentificare invalidă.
 
-## 9. Conclusions
+### Date și configurări
+
+Proiectul conține clase separate pentru date și configurări reutilizabile.
+
+Aici sunt păstrate valori precum base URL, endpoint-uri, date de login, valori de căutare și ID-uri folosite în teste.
+
+Această abordare face proiectul mai ușor de întreținut și mai clar.
