@@ -35,7 +35,7 @@ Scopul proiectului este să demonstreze că pot crea, organiza și rula teste au
 
 Proiectul este împărțit în mai multe pachete, pentru a separa clar testele UI, testele API, paginile și datele reutilizabile.
 
-### Teste UI-testat pe Opensource-demo
+### Teste UI-testat pe Orangehrmlive.com
 
 Testele UI sunt organizate folosind Page Object Model.
 
