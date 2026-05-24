@@ -28,7 +28,7 @@ public class DataPracticeSoftTests {
 
     // ID produs valid luat din response-ul real al API-ului
     public static final String VALID_PRODUCT_ID =
-            "01KSAZXCV76RYQWSQY9Y0R8MGW";
+            "01KSB3BBV9HQX4YGQ499MY8WY1";
 
     // Chei JSON folosite în validări
     public static final String RESPONSE_DATA_KEY =
